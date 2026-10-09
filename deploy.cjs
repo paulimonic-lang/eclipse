@@ -80,13 +80,18 @@ async function deploy() {
       user,
       password,
       port,
-      secure
+      secure,
+      secureOptions: {
+        rejectUnauthorized: false
+      }
     });
 
     console.log(`🔍 Checking remote directory structure...`);
     const rootList = await client.list();
     const hasPublicHtml = rootList.some(item => item.name === 'public_html');
-    const targetDir = hasPublicHtml ? `public_html/${projectName}` : projectName;
+    // If full cPanel user has public_html, put in public_html/molemo/<project>
+    // If dedicated FTP user is scoped directly to molemo, put in <project>
+    const targetDir = hasPublicHtml ? `public_html/molemo/${projectName}` : projectName;
 
     console.log(`📁 Ensuring remote directory exists: /${targetDir}...`);
     await client.ensureDir(targetDir);
@@ -96,7 +101,7 @@ async function deploy() {
 
     console.log('\n' + '='.repeat(60));
     console.log('🎉 DEPLOYMENT SUCCESSFUL!');
-    console.log(`🌐 Live Client URL: https://paulimonic.com/${projectName}/`);
+    console.log(`🌐 Live Client URL: https://paulimonic.com/molemo/${projectName}/`);
     console.log('='.repeat(60) + '\n');
   } catch (err) {
     console.error('\n❌ FTP Deployment Error:', err.message);

@@ -1152,4 +1152,30 @@ const openVideo = (id) => {
 
 <style>
 @import './assets/css/main.css';
+
+/* Explicit mobile stacking for Solar Calculator Navigation Tabs */
+@media screen and (max-width: 850px) {
+  .calc_tabs_nav {
+    flex-direction: column !important;
+    border-radius: 14px !important;
+    gap: 8px !important;
+    padding: 8px !important;
+    margin-bottom: 24px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .calc_tab_btn {
+    width: 100% !important;
+    flex: none !important;
+    display: block !important;
+    border-radius: 8px !important;
+    padding: 13px 18px !important;
+    font-size: 15px !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+    white-space: normal !important;
+    box-sizing: border-box !important;
+  }
+}
 </style>

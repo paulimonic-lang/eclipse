@@ -8,7 +8,7 @@ export default defineNuxtConfig({
     }
   },
   app: {
-    baseURL: process.env.NUXT_APP_BASE_URL || '/eclipse/',
+    baseURL: process.env.NUXT_APP_BASE_URL || '/molemo/eclipse/',
     head: {
       title: 'Solar Eclipse - Modern Energy & Insurance Solutions',
       meta: [

@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=$HOME/public_html/eclipse
+    - /bin/cp -R .output/public/* $DEPLOYPATH

@@ -1,0 +1,18 @@
+{
+  "name": "Eclips",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "zip": "node create-cpanel-zip.cjs",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "nuxt": "^4.6.0",
+    "vue": "^3.5.43",
+    "vue-router": "^5.3.1"
+  }
+}

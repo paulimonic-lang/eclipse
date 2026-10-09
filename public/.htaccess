@@ -1,0 +1,54 @@
+# ==============================================================================
+# Solar Eclipse - cPanel Apache Configuration
+# ==============================================================================
+
+# Disable directory listing
+Options -Indexes
+
+# Ensure standard MIME types for images, fonts, styles, scripts
+<IfModule mod_mime.c>
+  AddType image/jpeg .jpg .jpeg
+  AddType image/png .png
+  AddType image/webp .webp
+  AddType image/svg+xml .svg .svgz
+  AddType image/x-icon .ico
+  AddType text/css .css
+  AddType application/javascript .js
+  AddType application/json .json
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Enable Rewrite Engine for Single Page Application
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # If the file or directory exists, serve directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Exclude static assets from SPA rewrite
+  RewriteCond %{REQUEST_URI} \.(jpe?g|png|gif|webp|svg|ico|css|js|woff2?|ttf|eot)$ [NC]
+  RewriteRule ^ - [L]
+
+  # Fallback to index.html for SPA client-side routing
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Browser Caching & Compression
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json image/svg+xml
+</IfModule>

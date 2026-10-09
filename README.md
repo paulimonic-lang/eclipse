@@ -1,75 +1,34 @@
-# Nuxt Minimal Starter
+# Solar Eclipse - Modern Energy & Solar Solutions
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+A modern, responsive web application for **Solar Eclipse South Africa**, built with **Nuxt 4**, **Vue 3**, and vanilla CSS. Provides turnkey solar solutions, system sizing quote calculator, interactive hero sliders, and SANS COC-compliant energy services.
 
-## Setup
+## 🚀 Features
 
-Make sure to install dependencies:
+- **Responsive Design**: Optimized for all viewports (mobile, tablet, desktop) with stacked touch-friendly calculator tabs.
+- **Solar Sizing Calculator**: Real-time capacity slider and monthly Eskom savings estimator.
+- **Hero Slider**: Interactive transitions with authentic Solar Eclipse project imagery.
+- **Services & Brands Showcase**: Interactive service explorer and Tier-1 solar partner integrations (Victron, Sunsynk, Deye, Freedom Won, Pylontech, etc.).
+- **cPanel Production Ready**: Apache rewrite `.htaccess`, MIME types, and automated ZIP packaging script.
 
+## 🛠️ Development
+
+Install dependencies:
 ```bash
-# npm
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
+Start development server:
 ```bash
-# npm
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
-
-Build the application for production:
-
+Build and generate static site:
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+npm run generate
 ```
 
-Locally preview production build:
-
+Create production cPanel ZIP:
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+npm run zip
 ```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Output bundle is generated at `cpanel-public_html.zip`.

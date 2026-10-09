@@ -83,10 +83,15 @@ async function deploy() {
       secure
     });
 
-    console.log(`📁 Ensuring remote directory exists: /${remoteDir}...`);
-    await client.ensureDir(remoteDir);
+    console.log(`🔍 Checking remote directory structure...`);
+    const rootList = await client.list();
+    const hasPublicHtml = rootList.some(item => item.name === 'public_html');
+    const targetDir = hasPublicHtml ? `public_html/${projectName}` : projectName;
 
-    console.log(`🚀 Uploading files from ${localDir} to /${remoteDir}...`);
+    console.log(`📁 Ensuring remote directory exists: /${targetDir}...`);
+    await client.ensureDir(targetDir);
+
+    console.log(`🚀 Uploading files from ${localDir} to /${targetDir}...`);
     await client.uploadFromDir(localDir);
 
     console.log('\n' + '='.repeat(60));
